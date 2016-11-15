@@ -40,7 +40,29 @@ def openNewFile():
     f.seek(0)
     f.close()
    
-
+def Helvetica():
+    global textarea
+    textarea.config(font="Helvetica")
+    fon='Helvetica'
+   
+def Courier():
+    global textarea
+    textarea.config(font="Courier")
+    fon='Courier'
+   
+#helv36 = tkFont.Font(family="Helvetica",size=36,weight="bold")
+   
+def change_size():
+    global si
+    si =input('Enter size : ')
+    textarea.config(font=(fon,si))
+   
+def change_color():
+    global c
+    c =input("Enter color : ")
+    textarea.config(font=(fon), fg = c)
+    textarea.config()
+ 
 root =Tk()
 root.title("Python Editor")
 root.minsize(width=400,height=400)
@@ -63,7 +85,11 @@ filemenu.add_separator()
 filemenu.add_command(label="Quit",command="")
 menubar.add_cascade(label='File',menu=filemenu)
 fontmenu = Menu(menubar)
-
+fontmenu.add_command(label="Helvetica",command=Helvetica)
+fontmenu.add_command(label="Courier",command=Courier)
+fontmenu.add_command(label="Size",command=change_size)
+fontmenu.add_command(label="Color",command=change_color)
+ 
 menubar.add_cascade(label='Font',menu=fontmenu)
  
 root.config(menu=menubar)
